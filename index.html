@@ -116,6 +116,13 @@
                   </a>
             </div>
 
+            <!-- CoRL 2025 Badge -->
+            <div class="has-text-centered" style="margin-top: 20px;">
+              <span class="tag is-medium" style="background-color: #f5f5f5; color: #333; font-size: 1rem; padding: 0.5em 1em;">
+                <strong>Coference on Robot Learning (CoRL) 2025</strong>
+              </span>
+            </div>
+
           </div>
         </div>
       </div>
@@ -123,31 +130,6 @@
   </div>
 </section>
 
-
-<!-- Video Presentation -->
-
-<section class="section">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          
-          <!-- Paper Video -->
-          <h3 class="title is-4">Video Presentation</h3>
-          <div class="content has-text-centered">
-            <video id="replay-video"
-                   controls
-                   muted
-                   preload
-                   playsinline
-                   width="125%">
-              <source src="./static/videos/611_diffusion_dynamics_video.mp4"
-                      type="video/mp4">
-            </video>
-    
-        </div>
-      </div>
-    </div>
-  </section>
 
 <!-- Moved teaser video section here
 <section class="hero teaser">
@@ -164,44 +146,58 @@
   </div>
 </section> -->
 
-<!-- Abstract -->
-<section class="section">
+<!-- TLDR -->
+<section class="section" style="padding: 1rem 0;">
   <div class="container is-max-desktop">
-    <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            Manipulating deformable objects like cloth is challenging due to their complex dynamics, near-infinite degrees of freedom, and frequent self-occlusions, 
-            which complicate state estimation and dynamics modeling. Prior work has struggled with robust cloth state estimation, while dynamics models, primarily 
-            based on Graph Neural Networks (GNNs), are limited by their locality. Inspired by recent advances in generative models, we hypothesize that these expressive 
-            models can effectively capture intricate cloth configurations and deformation patterns from data. Building on this insight, we propose a diffusion-based 
-            generative approach for both perception and dynamics modeling. Specifically, we formulate state estimation as reconstructing the full cloth state from sparse 
-            RGB-D observations conditioned on a canonical cloth mesh and dynamics modeling as predicting future states given the current state and robot actions. Leveraging 
-            a transformer-based diffusion model, our method achieves high-fidelity state reconstruction while reducing long-horizon dynamics prediction errors by an order of 
-            magnitude compared to GNN-based approaches. Integrated with model-predictive control (MPC), our framework successfully executes cloth folding on a real robotic 
-            system, demonstrating the potential of generative models for manipulation tasks with partial observability and complex dynamics.
+      <div class="column is-three-quarters">
+        <h3 class="title is-4" style="margin-bottom: 1rem;">TL;DR</h3>
+        <div class="notification is-light" style="background-color: #f8f9fa; border-left: 4px solid #3498db; font-size: 1rem; padding: 1rem; margin-bottom: 1rem;">
+          <p class="has-text-justified" style="color: #2c3e50; font-size: 0.95rem;">
+            We present a diffusion-based generative approach for cloth manipulation that achieves high-fidelity state reconstruction from sparse RGB-D observations and reduces long-horizon dynamics prediction errors by an order of magnitude compared to prior GNN-based methods.
           </p>
         </div>
       </div>
     </div>
-    <!--/ Abstract. -->
   </div>
 </section>
 
-<!-- Added Method Overview Section -->
-<section class="section">
+<!-- Abstract -->
+<section class="section" style="background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Method Overview</h2>
-        <div class="content has-text-justified">
-          
-          <div class="has-text-centered">
-            <!-- Add a method overview diagram/image here -->
-            <img src="./static/images/pipeline.png" alt="Method Overview">
+        <h2 class="title is-2" style="color: #2c3e50; margin-bottom: 2rem; font-weight: 300;">Abstract</h2>
+        <div class="box" style="background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); padding: 2.5rem; border: none;">
+          <div class="content has-text-justified" style="font-size: 1rem; line-height: 1.7; color: #444;">
+            <p>
+              Manipulating deformable objects like cloth is challenging due to their complex dynamics, near-infinite degrees of freedom, and frequent self-occlusions,
+              which complicate state estimation and dynamics modeling. Prior work has struggled with robust cloth state estimation, while dynamics models, primarily
+              based on Graph Neural Networks (GNNs), are limited by their locality. Inspired by recent advances in generative models, we hypothesize that these expressive
+              models can effectively capture intricate cloth configurations and deformation patterns from data. Building on this insight, we propose a diffusion-based
+              generative approach for both perception and dynamics modeling. Specifically, we formulate state estimation as reconstructing the full cloth state from sparse
+              RGB-D observations conditioned on a canonical cloth mesh and dynamics modeling as predicting future states given the current state and robot actions. Leveraging
+              a transformer-based diffusion model, our method achieves high-fidelity state reconstruction while reducing long-horizon dynamics prediction errors by an order of
+              magnitude compared to GNN-based approaches. Integrated with model-predictive control (MPC), our framework successfully executes cloth folding on a real robotic
+              system, demonstrating the potential of generative models for manipulation tasks with partial observability and complex dynamics.
+            </p>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Method Overview Section -->
+<section class="section" style="padding: 4rem 0;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-2" style="color: #2c3e50; margin-bottom: 3rem; font-weight: 300;">Method Overview</h2>
+        <div class="box" style="background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); padding: 2rem; border: none;">
+          <figure class="image">
+            <img src="./static/images/pipeline.png" alt="Method Overview" style="border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+          </figure>
         </div>
       </div>
     </div>
@@ -211,56 +207,62 @@
 <!-- Paper video moved to experiment results section -->
 
 <!-- Experiment Results Section -->
-<section class="section">
+<section class="section" style="background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%); padding: 4rem 0;">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Experiment Results</h2>
-        
-        
-        
-        <!-- Results Carousel -->
-        <h3 class="title is-4">State Estimation</h3>
-        <div class="has-text-centered">
-            <!-- Add a method overview diagram/image here -->
-            <img src="./static/images/state_estimation.png" alt="Method Overview">
-        </div>
+        <h2 class="title is-2" style="color: #2c3e50; margin-bottom: 3rem; font-weight: 300;">Experiment Results</h2>
 
-        <div class="has-text-centered">
-            <!-- Add a method overview diagram/image here -->
-            <img src="./static/images/state_estimation_qual.png" alt="Method Overview">
-        </div>
-
-        <!-- Results Carousel -->
-        <h3 class="title is-4">Dynamics Prediction</h3>
-        <div class="has-text-centered">
-            <!-- Add a method overview diagram/image here -->
-            <img src="./static/images/dynamics_qual.png" alt="Method Overview">
-        </div>
-
-        <div class="has-text-centered">
-            <!-- Add a method overview diagram/image here -->
-            <img src="./static/images/dynamics_quant.png" alt="Method Overview">
-        </div>
-
-        
-        <!-- Visual Effects -->
-        <div class="columns is-centered">
-          <div class="column">
-            <h3 class="title is-4">Manipulation with MPC</h3>
-            <div class="has-text-centered">
-                <!-- Add a method overview diagram/image here -->
-                <img src="./static/images/manipulation_qual.png" alt="Method Overview">
+        <!-- State Estimation Results -->
+        <div class="box" style="background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); padding: 2.5rem; margin-bottom: 3rem; border: none;">
+          <h3 class="title is-3" style="color: #34495e; margin-bottom: 2rem; font-weight: 400;">State Estimation</h3>
+          <div class="columns is-multiline is-centered">
+            <div class="column is-half">
+              <figure class="image">
+                <img src="./static/images/state_estimation.png" alt="State Estimation Quantitative" style="border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+              </figure>
             </div>
-            <div class="has-text-centered">
-                <!-- Add a method overview diagram/image here -->
-                <img src="./static/images/manipulation_quant.png" alt="Method Overview">
+            <div class="column is-half">
+              <figure class="image">
+                <img src="./static/images/state_estimation_qual.png" alt="State Estimation Qualitative" style="border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+              </figure>
             </div>
           </div>
-
         </div>
-        
-    
+
+        <!-- Dynamics Prediction Results -->
+        <div class="box" style="background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); padding: 2.5rem; margin-bottom: 3rem; border: none;">
+          <h3 class="title is-3" style="color: #34495e; margin-bottom: 2rem; font-weight: 400;">Dynamics Prediction</h3>
+          <div class="columns is-multiline is-centered">
+            <div class="column is-half">
+              <figure class="image">
+                <img src="./static/images/dynamics_qual.png" alt="Dynamics Qualitative" style="border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+              </figure>
+            </div>
+            <div class="column is-half">
+              <figure class="image">
+                <img src="./static/images/dynamics_quant.png" alt="Dynamics Quantitative" style="border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <!-- Manipulation Results -->
+        <div class="box" style="background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); padding: 2.5rem; border: none;">
+          <h3 class="title is-3" style="color: #34495e; margin-bottom: 2rem; font-weight: 400;">Manipulation with MPC</h3>
+          <div class="columns is-multiline is-centered">
+            <div class="column is-half">
+              <figure class="image">
+                <img src="./static/images/manipulation_qual.png" alt="Manipulation Qualitative" style="border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+              </figure>
+            </div>
+            <div class="column is-half">
+              <figure class="image">
+                <img src="./static/images/manipulation_quant.png" alt="Manipulation Quantitative" style="border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+              </figure>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
