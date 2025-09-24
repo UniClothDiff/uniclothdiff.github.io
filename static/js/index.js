@@ -77,9 +77,11 @@ $(document).ready(function() {
 
     // Custom Carousel Class
     class CustomCarousel {
-        constructor(carouselId, totalSlides) {
+        constructor(carouselId, totalSlides, slidesVisible = 3) {
             this.currentSlide = 0;
             this.totalSlides = totalSlides;
+            this.slidesVisible = slidesVisible;
+            this.slideWidth = 100 / slidesVisible; // Calculate slide width based on visible slides
             this.track = document.querySelector(`#${carouselId} .carousel-track`);
             this.indicators = document.querySelectorAll(`#${carouselId} .indicator`);
             this.prevBtn = document.getElementById(`${carouselId.replace('-carousel', '')}-prev`);
@@ -107,14 +109,14 @@ $(document).ready(function() {
                 // Temporarily disable transition for instant resets
                 this.track.style.transition = instant ? 'none' : 'transform 0.3s ease';
 
-                // Move by 33.33% for each slide
-                this.track.style.transform = `translateX(-${this.currentSlide * 33.33}%)`;
+                // Move by slideWidth for each slide
+                this.track.style.transform = `translateX(-${this.currentSlide * this.slideWidth}%)`;
 
                 // Update indicators based on logical position
                 const logicalPosition = this.currentSlide >= this.totalSlides ? this.currentSlide - this.totalSlides : this.currentSlide;
                 this.indicators.forEach((indicator, index) => {
-                    const groupStart = index * 3;
-                    const groupEnd = Math.min(groupStart + 2, this.totalSlides - 1);
+                    const groupStart = index * this.slidesVisible;
+                    const groupEnd = Math.min(groupStart + this.slidesVisible - 1, this.totalSlides - 1);
                     const isActive = logicalPosition >= groupStart && logicalPosition <= groupEnd;
                     indicator.style.background = isActive ? '#3498db' : '#ddd';
                     indicator.classList.toggle('active', isActive);
@@ -154,7 +156,7 @@ $(document).ready(function() {
         }
 
         goToSlide(slideIndex) {
-            this.currentSlide = slideIndex * 3; // Jump to start of group (each group has 3 slides)
+            this.currentSlide = slideIndex * this.slidesVisible; // Jump to start of group
             if (this.currentSlide >= this.totalSlides) {
                 this.currentSlide = this.totalSlides - 1;
             }
@@ -162,8 +164,11 @@ $(document).ready(function() {
         }
     }
 
-    // Initialize both carousels
-    const clothCarousel = new CustomCarousel('dynamics-carousel', 10);
-    const tshirtCarousel = new CustomCarousel('tshirt-carousel', 10);
+    // Initialize all carousels
+    const clothCarousel = new CustomCarousel('dynamics-carousel', 10, 3);        // 3 gifs visible
+    const tshirtCarousel = new CustomCarousel('tshirt-carousel', 10, 3);         // 3 gifs visible
+    const handCarousel = new CustomCarousel('hand-carousel', 4, 2);              // 2 videos visible
+    const singleStepCarousel = new CustomCarousel('single-step-carousel', 6, 2); // 2 videos visible
+    const multiStepCarousel = new CustomCarousel('multi-step-carousel', 5, 2);   // 2 videos visible
 
 })
