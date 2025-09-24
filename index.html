@@ -96,16 +96,6 @@
                 </a>
               </span>
               <!-- Code Link. -->
-              <!-- <span class="link-block">
-                <a href="https://github.com/google/nerfies"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code</span>
-                  </a>
-              </span> -->
-              <!-- Dataset Link. -->
               <span class="link-block">
                 <a href="https://github.com/Tongxuan259/UniClothDiff"
                    class="external-link button is-normal is-rounded is-dark">
@@ -113,7 +103,7 @@
                       <i class="far fa-images"></i>
                   </span>
                   <span>Code</span>
-                  </a>
+                </a>
             </div>
 
             <!-- CoRL 2025 Badge -->
@@ -150,11 +140,11 @@
 <section class="section" style="padding: 1rem 0;">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
-      <div class="column is-three-quarters">
+      <div class="column">
         <h3 class="title is-4" style="margin-bottom: 1rem;">TL;DR</h3>
         <div class="notification is-light" style="background-color: #f8f9fa; border-left: 4px solid #3498db; font-size: 1rem; padding: 1rem; margin-bottom: 1rem;">
           <p class="has-text-justified" style="color: #2c3e50; font-size: 0.95rem;">
-            We present a diffusion-based generative approach for cloth manipulation that achieves high-fidelity state reconstruction from sparse RGB-D observations and reduces long-horizon dynamics prediction errors by an order of magnitude compared to prior GNN-based methods.
+            We propose a novel approach for estimating and learning cloth state and dynamics with diffusion models for cloth manipulation.
           </p>
         </div>
       </div>
@@ -169,7 +159,7 @@
       <div class="column is-four-fifths">
         <h2 class="title is-2" style="color: #2c3e50; margin-bottom: 2rem; font-weight: 300;">Abstract</h2>
         <div class="box" style="background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); padding: 2.5rem; border: none;">
-          <div class="content has-text-justified" style="font-size: 1rem; line-height: 1.7; color: #444;">
+          <div class="content has-text-justified" style="font-size: 0.95rem; line-height: 1.7; color: #444;">
             <p>
               Manipulating deformable objects like cloth is challenging due to their complex dynamics, near-infinite degrees of freedom, and frequent self-occlusions,
               which complicate state estimation and dynamics modeling. Prior work has struggled with robust cloth state estimation, while dynamics models, primarily
@@ -214,42 +204,173 @@
         <h2 class="title is-2" style="color: #2c3e50; margin-bottom: 3rem; font-weight: 300;">Experiment Results</h2>
 
         <!-- State Estimation Results -->
-        <div class="box" style="background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); padding: 2.5rem; margin-bottom: 3rem; border: none;">
+        <div style="margin-bottom: 3rem;">
           <h3 class="title is-3" style="color: #34495e; margin-bottom: 2rem; font-weight: 400;">State Estimation</h3>
-          <div class="columns is-multiline is-centered">
-            <div class="column is-half">
-              <figure class="image">
-                <img src="./static/images/state_estimation.png" alt="State Estimation Quantitative" style="border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-              </figure>
-            </div>
-            <div class="column is-half">
-              <figure class="image">
-                <img src="./static/images/state_estimation_qual.png" alt="State Estimation Qualitative" style="border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-              </figure>
-            </div>
+          <div class="has-text-centered">
+            <figure class="image" style="max-width: 700px; margin: 0 auto;">
+              <img src="./static/images/state_estimation.png" alt="State Estimation Quantitative" style="border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+            </figure>
           </div>
         </div>
 
         <!-- Dynamics Prediction Results -->
         <div class="box" style="background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); padding: 2.5rem; margin-bottom: 3rem; border: none;">
           <h3 class="title is-3" style="color: #34495e; margin-bottom: 2rem; font-weight: 400;">Dynamics Prediction</h3>
-          <div class="columns is-multiline is-centered">
-            <div class="column is-half">
-              <figure class="image">
-                <img src="./static/images/dynamics_qual.png" alt="Dynamics Qualitative" style="border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-              </figure>
+
+          <!-- Quantitative Results -->
+          <div class="has-text-centered" style="margin-bottom: 3rem;">
+            <h4 class="title is-5" style="color: #5a6c7d; margin-bottom: 1.5rem;">Quantitative Results</h4>
+            <figure class="image" style="max-width: 700px; margin: 0 auto;">
+              <img src="./static/images/dynamics_quant.png" alt="Dynamics Quantitative" style="border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+            </figure>
+          </div>
+
+          <!-- Qualitative Results Section -->
+          <div class="has-text-centered">
+            <h4 class="title is-5" style="color: #5a6c7d; margin-bottom: 2rem;">Qualitative Results</h4>
+
+            <!-- Cloth Results -->
+            <div style="margin-bottom: 2rem;">
+
+            <!-- Multi-item Carousel Implementation -->
+            <div id="dynamics-carousel" style="position: relative; max-width: 900px; margin: 0 auto;">
+              <div class="carousel-viewport" style="overflow: hidden;">
+                <div class="carousel-track" style="display: flex; transition: transform 0.3s ease;">
+                  <div class="carousel-slide" style="min-width: 33.33%; padding: 0 10px;">
+                    <img src="./static/videos/dynamics/cloth/our_file00_pred.gif" alt="Dynamics Result 1" style="border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); width: 100%; height: auto;">
+                  </div>
+                  <div class="carousel-slide" style="min-width: 33.33%; padding: 0 10px;">
+                    <img src="./static/videos/dynamics/cloth/our_file01_pred.gif" alt="Dynamics Result 2" style="border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); width: 100%; height: auto;">
+                  </div>
+                  <div class="carousel-slide" style="min-width: 33.33%; padding: 0 10px;">
+                    <img src="./static/videos/dynamics/cloth/our_file02_pred.gif" alt="Dynamics Result 3" style="border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); width: 100%; height: auto;">
+                  </div>
+                  <div class="carousel-slide" style="min-width: 33.33%; padding: 0 10px;">
+                    <img src="./static/videos/dynamics/cloth/our_file03_pred.gif" alt="Dynamics Result 4" style="border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); width: 100%; height: auto;">
+                  </div>
+                  <div class="carousel-slide" style="min-width: 33.33%; padding: 0 10px;">
+                    <img src="./static/videos/dynamics/cloth/our_file04_pred.gif" alt="Dynamics Result 5" style="border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); width: 100%; height: auto;">
+                  </div>
+                  <div class="carousel-slide" style="min-width: 33.33%; padding: 0 10px;">
+                    <img src="./static/videos/dynamics/cloth/our_file05_pred.gif" alt="Dynamics Result 6" style="border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); width: 100%; height: auto;">
+                  </div>
+                  <div class="carousel-slide" style="min-width: 33.33%; padding: 0 10px;">
+                    <img src="./static/videos/dynamics/cloth/our_file06_pred.gif" alt="Dynamics Result 7" style="border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); width: 100%; height: auto;">
+                  </div>
+                  <div class="carousel-slide" style="min-width: 33.33%; padding: 0 10px;">
+                    <img src="./static/videos/dynamics/cloth/our_file07_pred.gif" alt="Dynamics Result 8" style="border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); width: 100%; height: auto;">
+                  </div>
+                  <div class="carousel-slide" style="min-width: 33.33%; padding: 0 10px;">
+                    <img src="./static/videos/dynamics/cloth/our_file08_pred.gif" alt="Dynamics Result 9" style="border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); width: 100%; height: auto;">
+                  </div>
+                  <div class="carousel-slide" style="min-width: 33.33%; padding: 0 10px;">
+                    <img src="./static/videos/dynamics/cloth/our_file09_pred.gif" alt="Dynamics Result 10" style="border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); width: 100%; height: auto;">
+                  </div>
+                  <!-- Duplicate first 2 slides for seamless loop -->
+                  <div class="carousel-slide" style="min-width: 33.33%; padding: 0 10px;">
+                    <img src="./static/videos/dynamics/cloth/our_file00_pred.gif" alt="Dynamics Result 1" style="border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); width: 100%; height: auto;">
+                  </div>
+                  <div class="carousel-slide" style="min-width: 33.33%; padding: 0 10px;">
+                    <img src="./static/videos/dynamics/cloth/our_file01_pred.gif" alt="Dynamics Result 2" style="border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); width: 100%; height: auto;">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Navigation buttons -->
+              <button id="dynamics-prev" class="carousel-nav" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.2); z-index: 10;">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <button id="dynamics-next" class="carousel-nav" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.2); z-index: 10;">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+
+              <!-- Indicators (4 groups: 3+3+3+1) -->
+              <div class="carousel-indicators" style="text-align: center; margin-top: 15px;">
+                <button class="indicator active" data-slide="0" style="width: 12px; height: 12px; border-radius: 50%; border: none; margin: 0 5px; cursor: pointer; background: #3498db;"></button>
+                <button class="indicator" data-slide="1" style="width: 12px; height: 12px; border-radius: 50%; border: none; margin: 0 5px; cursor: pointer; background: #ddd;"></button>
+                <button class="indicator" data-slide="2" style="width: 12px; height: 12px; border-radius: 50%; border: none; margin: 0 5px; cursor: pointer; background: #ddd;"></button>
+                <button class="indicator" data-slide="3" style="width: 12px; height: 12px; border-radius: 50%; border: none; margin: 0 5px; cursor: pointer; background: #ddd;"></button>
+              </div>
             </div>
-            <div class="column is-half">
-              <figure class="image">
-                <img src="./static/images/dynamics_quant.png" alt="Dynamics Quantitative" style="border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-              </figure>
+
             </div>
+
+            <!-- T-Shirt Results -->
+            <div style="margin-bottom: 2rem;">
+
+            <!-- Multi-item Carousel Implementation for T-Shirt -->
+            <div id="tshirt-carousel" style="position: relative; max-width: 900px; margin: 0 auto;">
+              <div class="carousel-viewport" style="overflow: hidden;">
+                <div class="carousel-track" style="display: flex; transition: transform 0.3s ease;">
+                  <div class="carousel-slide" style="min-width: 33.33%; padding: 0 10px;">
+                    <img src="./static/videos/dynamics/tshirt/our_file00_pred.gif" alt="T-Shirt Result 1" style="border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); width: 100%; height: auto;">
+                  </div>
+                  <div class="carousel-slide" style="min-width: 33.33%; padding: 0 10px;">
+                    <img src="./static/videos/dynamics/tshirt/our_file01_pred.gif" alt="T-Shirt Result 2" style="border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); width: 100%; height: auto;">
+                  </div>
+                  <div class="carousel-slide" style="min-width: 33.33%; padding: 0 10px;">
+                    <img src="./static/videos/dynamics/tshirt/our_file02_pred.gif" alt="T-Shirt Result 3" style="border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); width: 100%; height: auto;">
+                  </div>
+                  <div class="carousel-slide" style="min-width: 33.33%; padding: 0 10px;">
+                    <img src="./static/videos/dynamics/tshirt/our_file04_pred.gif" alt="T-Shirt Result 4" style="border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); width: 100%; height: auto;">
+                  </div>
+                  <div class="carousel-slide" style="min-width: 33.33%; padding: 0 10px;">
+                    <img src="./static/videos/dynamics/tshirt/our_file05_pred.gif" alt="T-Shirt Result 5" style="border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); width: 100%; height: auto;">
+                  </div>
+                  <div class="carousel-slide" style="min-width: 33.33%; padding: 0 10px;">
+                    <img src="./static/videos/dynamics/tshirt/our_file10_pred.gif" alt="T-Shirt Result 6" style="border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); width: 100%; height: auto;">
+                  </div>
+                  <div class="carousel-slide" style="min-width: 33.33%; padding: 0 10px;">
+                    <img src="./static/videos/dynamics/tshirt/our_file12_pred.gif" alt="T-Shirt Result 7" style="border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); width: 100%; height: auto;">
+                  </div>
+                  <div class="carousel-slide" style="min-width: 33.33%; padding: 0 10px;">
+                    <img src="./static/videos/dynamics/tshirt/our_file13_pred.gif" alt="T-Shirt Result 8" style="border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); width: 100%; height: auto;">
+                  </div>
+                  <div class="carousel-slide" style="min-width: 33.33%; padding: 0 10px;">
+                    <img src="./static/videos/dynamics/tshirt/our_file19_pred.gif" alt="T-Shirt Result 9" style="border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); width: 100%; height: auto;">
+                  </div>
+                  <div class="carousel-slide" style="min-width: 33.33%; padding: 0 10px;">
+                    <img src="./static/videos/dynamics/tshirt/our_file21_pred.gif" alt="T-Shirt Result 10" style="border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); width: 100%; height: auto;">
+                  </div>
+                  <!-- Duplicate first 2 slides for seamless loop -->
+                  <div class="carousel-slide" style="min-width: 33.33%; padding: 0 10px;">
+                    <img src="./static/videos/dynamics/tshirt/our_file00_pred.gif" alt="T-Shirt Result 1" style="border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); width: 100%; height: auto;">
+                  </div>
+                  <div class="carousel-slide" style="min-width: 33.33%; padding: 0 10px;">
+                    <img src="./static/videos/dynamics/tshirt/our_file01_pred.gif" alt="T-Shirt Result 2" style="border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); width: 100%; height: auto;">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Navigation buttons -->
+              <button id="tshirt-prev" class="carousel-nav" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.2); z-index: 10;">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <button id="tshirt-next" class="carousel-nav" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.2); z-index: 10;">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+
+              <!-- Indicators (4 groups: 3+3+3+1) -->
+              <div class="carousel-indicators" style="text-align: center; margin-top: 15px;">
+                <button class="indicator active" data-slide="0" style="width: 12px; height: 12px; border-radius: 50%; border: none; margin: 0 5px; cursor: pointer; background: #3498db;"></button>
+                <button class="indicator" data-slide="1" style="width: 12px; height: 12px; border-radius: 50%; border: none; margin: 0 5px; cursor: pointer; background: #ddd;"></button>
+                <button class="indicator" data-slide="2" style="width: 12px; height: 12px; border-radius: 50%; border: none; margin: 0 5px; cursor: pointer; background: #ddd;"></button>
+                <button class="indicator" data-slide="3" style="width: 12px; height: 12px; border-radius: 50%; border: none; margin: 0 5px; cursor: pointer; background: #ddd;"></button>
+              </div>
+            </div>
+
+            </div>
+
+            <!-- Navigation instruction for entire section -->
+            <p class="has-text-centered" style="margin-top: 2rem; color: #7a8288; font-size: 0.9rem;">
+              <i class="fas fa-info-circle"></i> Click arrows or indicators to navigate through results
+            </p>
           </div>
         </div>
 
         <!-- Manipulation Results -->
         <div class="box" style="background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); padding: 2.5rem; border: none;">
-          <h3 class="title is-3" style="color: #34495e; margin-bottom: 2rem; font-weight: 400;">Manipulation with MPC</h3>
+          <h3 class="title is-3" style="color: #34495e; margin-bottom: 2rem; font-weight: 400;">Cloth Manipulation</h3>
           <div class="columns is-multiline is-centered">
             <div class="column is-half">
               <figure class="image">

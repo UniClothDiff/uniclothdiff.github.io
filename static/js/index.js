@@ -75,4 +75,95 @@ $(document).ready(function() {
 
     bulmaSlider.attach();
 
+    // Custom Carousel Class
+    class CustomCarousel {
+        constructor(carouselId, totalSlides) {
+            this.currentSlide = 0;
+            this.totalSlides = totalSlides;
+            this.track = document.querySelector(`#${carouselId} .carousel-track`);
+            this.indicators = document.querySelectorAll(`#${carouselId} .indicator`);
+            this.prevBtn = document.getElementById(`${carouselId.replace('-carousel', '')}-prev`);
+            this.nextBtn = document.getElementById(`${carouselId.replace('-carousel', '')}-next`);
+
+            this.init();
+        }
+
+        init() {
+            // Event listeners
+            if (this.nextBtn) this.nextBtn.addEventListener('click', () => this.nextSlide());
+            if (this.prevBtn) this.prevBtn.addEventListener('click', () => this.prevSlide());
+
+            this.indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => this.goToSlide(index));
+                indicator.setAttribute('data-slide', index);
+            });
+
+            // Auto-play
+            setInterval(() => this.nextSlide(), 5000);
+        }
+
+        updateCarousel(instant = false) {
+            if (this.track) {
+                // Temporarily disable transition for instant resets
+                this.track.style.transition = instant ? 'none' : 'transform 0.3s ease';
+
+                // Move by 33.33% for each slide
+                this.track.style.transform = `translateX(-${this.currentSlide * 33.33}%)`;
+
+                // Update indicators based on logical position
+                const logicalPosition = this.currentSlide >= this.totalSlides ? this.currentSlide - this.totalSlides : this.currentSlide;
+                this.indicators.forEach((indicator, index) => {
+                    const groupStart = index * 3;
+                    const groupEnd = Math.min(groupStart + 2, this.totalSlides - 1);
+                    const isActive = logicalPosition >= groupStart && logicalPosition <= groupEnd;
+                    indicator.style.background = isActive ? '#3498db' : '#ddd';
+                    indicator.classList.toggle('active', isActive);
+                });
+
+                // Force reflow if transition was disabled
+                if (instant) {
+                    this.track.offsetHeight;
+                }
+            }
+        }
+
+        nextSlide() {
+            this.currentSlide++;
+
+            if (this.currentSlide >= this.totalSlides) {
+                // We're now showing duplicates, let the animation play out then reset
+                this.updateCarousel(false);
+
+                // After the animation completes, jump back to the equivalent real position
+                setTimeout(() => {
+                    this.currentSlide = this.currentSlide - this.totalSlides; // Convert 10->0, 11->1
+                    this.updateCarousel(true); // No animation for the reset
+                }, 300);
+            } else {
+                this.updateCarousel(false);
+            }
+        }
+
+        prevSlide() {
+            if (this.currentSlide <= 0) {
+                this.currentSlide = this.totalSlides - 1; // Go to last slide
+            } else {
+                this.currentSlide--;
+            }
+            this.updateCarousel(false);
+        }
+
+        goToSlide(slideIndex) {
+            this.currentSlide = slideIndex * 3; // Jump to start of group (each group has 3 slides)
+            if (this.currentSlide >= this.totalSlides) {
+                this.currentSlide = this.totalSlides - 1;
+            }
+            this.updateCarousel(false);
+        }
+    }
+
+    // Initialize both carousels
+    const clothCarousel = new CustomCarousel('dynamics-carousel', 10);
+    const tshirtCarousel = new CustomCarousel('tshirt-carousel', 10);
+
 })
